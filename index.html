@@ -1,0 +1,1004 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Zenvola AI & Data helps businesses automate data cleaning, reporting, dashboards and repetitive workflows. Less manual work. More room to grow.">
+  <title>Zenvola AI & Data | Intelligent Business Automation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #0c192a;
+      --panel-light: #112238;
+      --white: #f4f8ff;
+      --muted: #9baec4;
+      --cyan: #53e0e8;
+      --blue: #648bff;
+      --border: rgba(169, 197, 226, .14);
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+
+    .container {
+      width: min(var(--max), calc(100% - 44px));
+      margin-inline: auto;
+    }
+
+    .top-glow {
+      position: absolute;
+      top: -230px;
+      left: 30%;
+      width: 600px;
+      height: 600px;
+      background: rgba(35, 128, 204, .12);
+      filter: blur(110px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .announcement {
+      position: relative;
+      text-align: center;
+      padding: 9px 15px;
+      font-size: 12px;
+      color: #c4d5e9;
+      background: #0b1928;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .announcement span { color: var(--cyan); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 17, 31, .9);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      flex-shrink: 0;
+    }
+
+    .brand-icon {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #65edf0, #477aff);
+      color: #07111f;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .brand-name {
+      display: block;
+      font: 800 17px "Manrope", sans-serif;
+      letter-spacing: -.6px;
+      line-height: 1.25;
+    }
+
+    .brand-sub {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 13px;
+      color: #c0cfe0;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 19px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      background: linear-gradient(110deg, #65e7e8, #80c8ff);
+      color: #07111f;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s, filter .2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.06); }
+
+    .btn-outline {
+      color: var(--white);
+      background: rgba(255,255,255,.025);
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover { border-color: var(--cyan); }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-size: 21px;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      padding: 100px 0 84px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 66px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 12px;
+      border: 1px solid rgba(83, 224, 232, .22);
+      background: rgba(83, 224, 232, .06);
+      color: var(--cyan);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan);
+    }
+
+    h1, h2, h3 {
+      font-family: "Manrope", sans-serif;
+      letter-spacing: -1.3px;
+      line-height: 1.15;
+    }
+
+    h1 {
+      margin: 25px 0 22px;
+      font-size: clamp(39px, 5vw, 64px);
+      font-weight: 800;
+    }
+
+    .gradient-text {
+      color: var(--cyan);
+      background: linear-gradient(100deg, #5ce4e8, #86a8ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 510px;
+      color: #aabbd0;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 31px;
+    }
+
+    .trust-line {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 26px;
+      color: #90a4bc;
+      font-size: 11px;
+    }
+
+    .trust-line b { color: #e2ecf8; font-weight: 600; }
+
+    .dashboard {
+      position: relative;
+      padding: 22px;
+      background: linear-gradient(145deg, #102239, #091523);
+      border: 1px solid rgba(153, 195, 233, .2);
+      border-radius: 18px;
+      box-shadow: 0 35px 90px rgba(0, 0, 0, .28);
+    }
+
+    .dashboard::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      background: linear-gradient(140deg, rgba(83,224,232,.3), transparent 40%);
+      border-radius: inherit;
+      filter: blur(16px);
+    }
+
+    .dash-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 23px;
+    }
+
+    .dash-head h3 { font-size: 15px; letter-spacing: -.3px; }
+
+    .dash-head p { color: var(--muted); font-size: 11px; margin-top: 5px; }
+
+    .sample-tag {
+      padding: 5px 8px;
+      background: rgba(83,224,232,.08);
+      color: var(--cyan);
+      border: 1px solid rgba(83,224,232,.2);
+      border-radius: 6px;
+      font-size: 9px;
+      white-space: nowrap;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,.035);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .stat-label { color: #9aafc7; font-size: 10px; }
+    .stat-value { font: 700 26px "Manrope", sans-serif; margin-top: 5px; }
+    .stat-foot { color: #83d9bd; font-size: 10px; margin-top: 4px; }
+
+    .chart-box {
+      margin-top: 13px;
+      padding: 15px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.025);
+      border-radius: 10px;
+    }
+
+    .chart-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: #d9e5f3;
+      font-size: 11px;
+    }
+
+    .chart-title span { color: var(--muted); font-size: 10px; }
+
+    .chart {
+      display: flex;
+      height: 95px;
+      align-items: flex-end;
+      gap: 8px;
+      padding: 7px 0 0;
+      border-bottom: 1px solid var(--border);
+      background: repeating-linear-gradient(to bottom, transparent 0 30px, rgba(255,255,255,.045) 31px 32px);
+    }
+
+    .bar {
+      flex: 1;
+      min-width: 5px;
+      height: var(--height);
+      border-radius: 4px 4px 0 0;
+      background: linear-gradient(to top, #4077ef, #62e1e5);
+      opacity: .85;
+    }
+
+    .chart-labels {
+      display: flex;
+      justify-content: space-between;
+      color: #7f96b0;
+      font-size: 9px;
+      padding-top: 7px;
+    }
+
+    .dash-bottom {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      padding: 11px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font-size: 10px;
+      color: #a9bdd2;
+    }
+
+    .check-icon {
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+      background: rgba(104, 221, 180, .12);
+      color: #7de2b8;
+      border-radius: 7px;
+    }
+
+    .section { padding: 91px 0; }
+
+    .section-alt {
+      background: linear-gradient(180deg, rgba(17,34,56,.45), rgba(7,17,31,.2));
+      border-block: 1px solid rgba(169,197,226,.08);
+    }
+
+    .section-head {
+      max-width: 650px;
+      margin-bottom: 43px;
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 43px);
+      font-weight: 800;
+    }
+
+    .section-head p {
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .service-card {
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+      background: rgba(15,31,50,.68);
+      border-radius: 13px;
+      transition: border-color .25s, transform .25s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(83,224,232,.45);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      display: grid;
+      place-items: center;
+      width: 47px;
+      height: 47px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(83,224,232,.18);
+      border-radius: 12px;
+      background: rgba(83,224,232,.07);
+      color: var(--cyan);
+      font-size: 22px;
+    }
+
+    .service-card h3 { font-size: 18px; letter-spacing: -.4px; }
+    .service-card p { color: var(--muted); font-size: 13px; line-height: 1.85; margin-top: 13px; }
+
+    .service-list {
+      list-style: none;
+      margin-top: 20px;
+      display: grid;
+      gap: 9px;
+      color: #cfdae7;
+      font-size: 11px;
+    }
+
+    .service-list li::before {
+      content: "✓";
+      color: var(--cyan);
+      margin-right: 9px;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .demo-copy h2 { margin-bottom: 19px; }
+    .demo-copy > p { color: var(--muted); font-size: 14px; line-height: 1.95; }
+
+    .demo-points {
+      display: grid;
+      gap: 17px;
+      margin: 27px 0;
+    }
+
+    .demo-point {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+    }
+
+    .demo-point .service-icon {
+      width: 37px;
+      height: 37px;
+      flex-shrink: 0;
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .demo-point strong { display: block; font-size: 13px; margin-bottom: 3px; }
+    .demo-point p { color: var(--muted); font-size: 12px; }
+
+    .pipeline {
+      padding: 25px;
+      background: #0c192a;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .pipeline h3 { font-size: 16px; margin-bottom: 6px; letter-spacing: -.4px; }
+    .pipeline-sub { color: var(--muted); font-size: 11px; margin-bottom: 24px; }
+
+    .pipe-step {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 14px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+    }
+
+    .pipe-step + .pipe-arrow + .pipe-step { margin-top: 0; }
+
+    .pipe-num {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      border-radius: 9px;
+      background: rgba(83,224,232,.09);
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .pipe-step strong { display: block; font-size: 12px; }
+    .pipe-step p { color: var(--muted); font-size: 10px; margin-top: 2px; }
+    .pipe-arrow { color: #5b7591; text-align: center; font-size: 16px; line-height: 29px; }
+
+    .pipeline-note {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(83,224,232,.045);
+      color: #a7bfd2;
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .process-step { position: relative; padding-top: 10px; }
+
+    .process-number {
+      color: var(--cyan);
+      font: 800 35px "Manrope", sans-serif;
+      opacity: .9;
+      margin-bottom: 19px;
+    }
+
+    .process-step h3 { font-size: 16px; letter-spacing: -.4px; margin-bottom: 11px; }
+    .process-step p { color: var(--muted); font-size: 12px; line-height: 1.9; }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      padding: 58px 35px;
+      border: 1px solid rgba(83,224,232,.23);
+      border-radius: 17px;
+      background: linear-gradient(115deg, #10283d, #101d35 70%, #172443);
+      text-align: center;
+    }
+
+    .cta-box::before {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 250px;
+      left: calc(50% - 175px);
+      top: -180px;
+      background: rgba(83,224,232,.17);
+      filter: blur(75px);
+      border-radius: 50%;
+    }
+
+    .cta-box h2, .cta-box p, .cta-box a { position: relative; }
+    .cta-box h2 { max-width: 650px; margin: auto; }
+    .cta-box p { color: #b3c3d8; max-width: 570px; margin: 17px auto 25px; font-size: 14px; }
+    .cta-box .btn { margin: 5px; }
+
+    footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .footer-copy { color: var(--muted); font-size: 11px; margin-top: 9px; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; color: #a6b8ce; font-size: 11px; }
+    .footer-links a:hover { color: var(--cyan); }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 47px; }
+      .hero { padding-top: 75px; }
+      .hero-copy { max-width: 650px; }
+      .dashboard { max-width: 620px; width: 100%; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .demo-grid { grid-template-columns: 1fr; gap: 35px; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    }
+
+    @media (max-width: 650px) {
+      .container { width: min(100% - 32px, var(--max)); }
+      nav { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        padding: 20px 22px 24px;
+        background: #0b1727;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 17px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links .btn { width: 100%; }
+      .brand-name { font-size: 15px; }
+      .hero { padding: 58px 0 65px; }
+      h1 { font-size: clamp(38px, 11vw, 53px); }
+      .hero-copy { font-size: 14px; }
+      .hero-actions { align-items: stretch; }
+      .hero-actions .btn { flex: 1; padding: 13px 11px; }
+      .trust-line { align-items: flex-start; line-height: 1.7; }
+      .dashboard { padding: 14px; }
+      .stat { padding: 12px; }
+      .stat-value { font-size: 23px; }
+      .section { padding: 67px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { padding: 25px 21px; }
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 27px 18px; }
+      .process-number { font-size: 29px; margin-bottom: 12px; }
+      .cta-box { padding: 43px 19px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+      .footer-links { gap: 15px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-glow"></div>
+
+  <div class="announcement">
+    Practical automation for growing businesses.
+    <span> Built around your workflow.</span>
+  </div>
+
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Zenvola home">
+        <span class="brand-icon">Z</span>
+        <span>
+          <span class="brand-name">Zenvola</span>
+          <span class="brand-sub">AI &amp; Data</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#services">Services</a>
+        <a href="#demo">Our approach</a>
+        <a href="#process">How we work</a>
+        <a href="#contact" class="btn">Discuss a project ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> AI, DATA &amp; AUTOMATION</span>
+          <h1>Less manual work.<br>More room to <span class="gradient-text">grow.</span></h1>
+          <p class="hero-copy">
+            We help businesses turn scattered data and repetitive tasks into
+            organized, reliable workflows. From cleaner spreadsheets to automated
+            reporting, Zenvola makes everyday operations easier to manage.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#contact">Let's discuss your project ↗</a>
+            <a class="btn btn-outline" href="#services">Explore our services ↓</a>
+          </div>
+
+          <div class="trust-line">
+            <span style="color:var(--cyan)">✦</span>
+            <span><b>Practical solutions.</b> Clear deliverables. Built around your needs.</span>
+          </div>
+        </div>
+
+        <div class="dashboard" aria-label="Illustrative sample business dashboard">
+          <div class="dash-head">
+            <div>
+              <h3>Business performance</h3>
+              <p>Illustrative marketing report</p>
+            </div>
+            <span class="sample-tag">SAMPLE DATA</span>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-label">Total ad spend</div>
+              <div class="stat-value">$4,820</div>
+              <div class="stat-foot">Example reporting period</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Leads generated</div>
+              <div class="stat-value">386</div>
+              <div class="stat-foot">Illustrative total</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Cost per lead</div>
+              <div class="stat-value">$12.49</div>
+              <div class="stat-foot">Spend ÷ leads</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Click-through rate</div>
+              <div class="stat-value">3.8%</div>
+              <div class="stat-foot">Illustrative rate</div>
+            </div>
+          </div>
+
+          <div class="chart-box">
+            <div class="chart-title">
+              <strong>Weekly lead activity</strong>
+              <span>Example trend</span>
+            </div>
+            <div class="chart" aria-label="Illustrative weekly bar chart">
+              <div class="bar" style="--height:35%"></div>
+              <div class="bar" style="--height:48%"></div>
+              <div class="bar" style="--height:43%"></div>
+              <div class="bar" style="--height:68%"></div>
+              <div class="bar" style="--height:57%"></div>
+              <div class="bar" style="--height:79%"></div>
+              <div class="bar" style="--height:92%"></div>
+            </div>
+            <div class="chart-labels">
+              <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+          </div>
+
+          <div class="dash-bottom">
+            <span class="check-icon">✓</span>
+            <span><strong style="color:#e3edf7">One organized view.</strong><br>Example of how reporting can be presented.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">What we do</span>
+          <h2>Better systems.<br><span class="gradient-text">Less busywork.</span></h2>
+          <p>
+            We focus on the operational tasks that consume time, create errors,
+            and make it harder for teams to understand their data.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">⌘</div>
+            <h3>Data cleaning &amp; organization</h3>
+            <p>Turn inconsistent spreadsheets and disconnected files into structured data your team can actually use.</p>
+            <ul class="service-list">
+              <li>Duplicate detection</li>
+              <li>Missing-data and validation checks</li>
+              <li>Standardized Excel and CSV files</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">▥</div>
+            <h3>Reporting &amp; dashboards</h3>
+            <p>Make business performance easier to understand with repeatable reports and useful visual summaries.</p>
+            <ul class="service-list">
+              <li>Automated report preparation</li>
+              <li>Performance dashboards</li>
+              <li>Consistent reporting formats</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">⟳</div>
+            <h3>Workflow automation</h3>
+            <p>Reduce repetitive manual steps by connecting tools and automating suitable routine processes.</p>
+            <ul class="service-list">
+              <li>Spreadsheet and file workflows</li>
+              <li>API and data-processing scripts</li>
+              <li>AI-assisted workflow opportunities</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="demo">
+      <div class="container demo-grid">
+        <div class="demo-copy">
+          <span class="section-label">A practical approach</span>
+          <h2>From scattered files to <span class="gradient-text">clear decisions.</span></h2>
+          <p>
+            Imagine receiving campaign data, lead lists, and client targets in
+            different spreadsheets. Instead of repeatedly combining files by
+            hand, a well-designed workflow can check the data, standardize it,
+            and prepare a consistent report.
+          </p>
+
+          <div class="demo-points">
+            <div class="demo-point">
+              <div class="service-icon">01</div>
+              <div>
+                <strong>Start with the data you already have</strong>
+                <p>Review existing spreadsheets, exports, and reporting requirements.</p>
+              </div>
+            </div>
+            <div class="demo-point">
+              <div class="service-icon">02</div>
+              <div>
+                <strong>Check before transforming</strong>
+                <p>Identify duplicates, missing fields, invalid values, and inconsistencies.</p>
+              </div>
+            </div>
+            <div class="demo-point">
+              <div class="service-icon">03</div>
+              <div>
+                <strong>Deliver something useful</strong>
+                <p>Produce agreed outputs with documented checks and a repeatable process.</p>
+              </div>
+            </div>
+          </div>
+
+          <a class="btn" href="#contact">Discuss your data workflow ↗</a>
+        </div>
+
+        <div class="pipeline">
+          <h3>Example data workflow</h3>
+          <p class="pipeline-sub">A simple illustration of a possible automation pipeline</p>
+
+          <div class="pipe-step">
+            <div class="pipe-num">01</div>
+            <div>
+              <strong>Collect source files</strong>
+              <p>CSV exports · Excel sheets · Agreed inputs</p>
+            </div>
+          </div>
+          <div class="pipe-arrow">↓</div>
+          <div class="pipe-step">
+            <div class="pipe-num">02</div>
+            <div>
+              <strong>Validate &amp; standardize</strong>
+              <p>Rules · Duplicates · Missing values · Formats</p>
+            </div>
+          </div>
+          <div class="pipe-arrow">↓</div>
+          <div class="pipe-step">
+            <div class="pipe-num">03</div>
+            <div>
+              <strong>Prepare reporting outputs</strong>
+              <p>Clean data · Quality report · Summary metrics</p>
+            </div>
+          </div>
+          <div class="pipe-arrow">↓</div>
+          <div class="pipe-step">
+            <div class="pipe-num">04</div>
+            <div>
+              <strong>Deliver &amp; document</strong>
+              <p>Reviewable results · Instructions · Handover</p>
+            </div>
+          </div>
+
+          <div class="pipeline-note">
+            Every project is scoped to the client's actual data and requirements.
+            This diagram describes a potential workflow, not a live connected system.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="process">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">How we work</span>
+          <h2>Simple from the <span class="gradient-text">first conversation.</span></h2>
+          <p>A clear process helps both sides understand the work, the deliverables, and what success looks like.</p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-step">
+            <div class="process-number">01</div>
+            <h3>Understand</h3>
+            <p>We discuss your current workflow, pain points, data sources, and desired outcome.</p>
+          </article>
+          <article class="process-step">
+            <div class="process-number">02</div>
+            <h3>Define</h3>
+            <p>We agree on scope, deliverables, timeline, access requirements, and acceptance criteria.</p>
+          </article>
+          <article class="process-step">
+            <div class="process-number">03</div>
+            <h3>Build &amp; test</h3>
+            <p>We develop the agreed solution and check its outputs against the defined requirements.</p>
+          </article>
+          <article class="process-step">
+            <div class="process-number">04</div>
+            <h3>Deliver</h3>
+            <p>You receive the agreed outputs, documentation, and a clear handover.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <span class="section-label">Let's talk</span>
+          <h2>What could your team do with <span class="gradient-text">less manual work?</span></h2>
+          <p>
+            Tell us about the spreadsheets, reports, or repetitive tasks slowing
+            your team down. We'll start by understanding the problem and the
+            outcome you need.
+          </p>
+          <a class="btn" href="mailto:ZenvolaSystems@gmail.com?subject=Zenvola%20Project%20Inquiry&body=Hello%20Zenvola%20team%2C%0A%0AI%20would%20like%20to%20discuss%20a%20data%20or%20automation%20project.%0A%0AMy%20current%20challenge%3A%0A%0AMy%20desired%20outcome%3A%0A%0AThank%20you.">
+            Email Zenvola ↗
+          </a>
+          <a class="btn btn-outline" href="mailto:ZenvolaSystems@gmail.com">ZenvolaSystems@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>
+        <a class="brand" href="#home">
+          <span class="brand-icon">Z</span>
+          <span>
+            <span class="brand-name">Zenvola</span>
+            <span class="brand-sub">AI &amp; Data</span>
+          </span>
+        </a>
+        <p class="footer-copy">Less manual work. More room to grow.</p>
+        <p class="footer-copy">© <span id="year"></span> Zenvola AI &amp; Data. All rights reserved.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#demo">Our approach</a>
+        <a href="#process">How we work</a>
+        <a href="mailto:ZenvolaSystems@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
